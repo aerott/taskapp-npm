@@ -1,0 +1,28 @@
+name: myworkflow
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+    - uses: actions/checkout@master
+
+    - name: Set Node.js version
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    # install dependencies, build, and test
+    - name: npm install, build, and test
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+   
+    - uses: azure/webapps-deploy@v1
+      with:
+        app-name: ${{ secrets.APPNAME }}
+        publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
+        package: '.'
