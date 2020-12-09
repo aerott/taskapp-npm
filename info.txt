@@ -1,0 +1,6 @@
+
+# Ref.: https://azure.github.io/AppService/2019/08/10/Github-actions-for-webapps.html#configure-the-repository
+
+
+# przykład z bloga został przetestowany i częściowo działa, tzn. przeszedł build i deploy,
+# ale projekt generalnie był trefny (nie-doklikany poprawnie).
